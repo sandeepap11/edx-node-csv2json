@@ -18,6 +18,7 @@ const convertToJSON = (header, line) => {
 
 const handleData = (data) => {
 
+  const outputFile = 'customer-data.json';
   const endOfLine = os.EOL;
   const allLines = data.split(endOfLine);
   let jsonValue = [];
@@ -25,10 +26,10 @@ const handleData = (data) => {
   for(let i = 1; i < allLines.length; i ++)
     jsonValue.push(convertToJSON(allLines[0], allLines[i]));
 
-    fs.writeFile(path.join(__dirname, 'customer-data.json'), JSON.stringify(jsonValue), 'utf8', (error) => {
+    fs.writeFile(path.join(__dirname, outputFile), JSON.stringify(jsonValue), 'utf8', (error) => {
       if(error) console.error(error);
       else {
-        console.log('Writing done!');
+        console.log('Writing done! Output file is ', );
       }
 
     });
